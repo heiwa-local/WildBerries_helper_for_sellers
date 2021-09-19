@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C4000000"
+    android:gravity="center|start|center_vertical"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:fontFamily="sans-serif-light"
+        android:hint="Statistic"
+        android:inputType="textAutoComplete"
+        android:textColor="#000000"
+        android:textColorHint="#72FFFFFF"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="#9C27B0"
+        android:text="@string/button_save"
+        android:textColor="#6AFFFFFF"
+        android:textColorHint="#673AB7"
+        android:textColorLink="#FFFFFF" />
+
+</LinearLayout>
