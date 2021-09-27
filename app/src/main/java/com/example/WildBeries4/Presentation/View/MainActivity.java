@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
-import com.example.WildBeries4.Presentation.ViewModel.NewStatisticActivity;
 import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

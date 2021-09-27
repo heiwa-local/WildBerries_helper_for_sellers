@@ -13,14 +13,20 @@ public class Statistic {
     @ColumnInfo(name = "name")
     public String name;
     @ColumnInfo
-    public String price;
+    public double fullPrice;
     @ColumnInfo
-    public Boolean in_cart;
+    public double volume;
+    @ColumnInfo
+    public double onePrice;
+    @ColumnInfo
+    public double procent;
+    @ColumnInfo
+    public double logistic;
 
-    public Statistic(String name, String price, Boolean in_cart) {
+    public Statistic(String name, double fullPrice, double volume) {
         this.name = name;
-        this.price = price;
-        this.in_cart = in_cart;
+        this.fullPrice = fullPrice;
+        this.volume = volume;
     }
 
     public String getName() {
@@ -31,20 +37,44 @@ public class Statistic {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public double getFullPrice() {
+        return fullPrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setFullPrice(double fullPrice) {
+        this.fullPrice = fullPrice;
     }
 
-    public Boolean getIn_cart() {
-        return in_cart;
+    public double getVolume() {
+        return volume;
     }
 
-    public void setIn_cart(Boolean in_cart) {
-        this.in_cart = in_cart;
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public double getOnePrice(){
+        return onePrice;
+    }
+
+    public void setOnePrice(double onePrice){
+        this.onePrice = onePrice;
+    }
+
+    public double getProcent(){
+        return procent;
+    }
+
+    public void setProcent(double procent){
+        this.procent = procent;
+    }
+
+    public double getLogistic(){
+        return logistic;
+    }
+
+    public void setLogistic(double logistic){
+        this.logistic = logistic;
     }
 
     public Statistic(@NonNull String statistic){this.name = statistic;}

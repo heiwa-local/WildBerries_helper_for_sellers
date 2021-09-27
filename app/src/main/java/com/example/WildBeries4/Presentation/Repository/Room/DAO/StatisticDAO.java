@@ -20,4 +20,7 @@ public interface StatisticDAO {
 
     @Query("SELECT * FROM Statistic ORDER BY name ASC")
     LiveData<List<Statistic>> getStatistic();
+
+    @Query("SELECT * FROM statistic WHERE name = :name")
+    Statistic getByName(String name);
 }

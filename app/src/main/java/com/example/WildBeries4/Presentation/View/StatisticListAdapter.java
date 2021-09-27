@@ -1,6 +1,10 @@
 package com.example.WildBeries4.Presentation.View;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.AsyncDifferConfig;
@@ -8,6 +12,7 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.R;
 
 public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHolder> {
 
@@ -29,6 +34,16 @@ public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHo
     public void onBindViewHolder(@NonNull StatisticViewHolder holder, int position) {
         Statistic current = getItem(position);
         holder.bind(current.getStatistic());
+        Context context = holder.itemView.getContext();
+        TextView tvName = holder.itemView.findViewById(R.id.tvNameMain);
+        holder.itemView.findViewById(R.id.tvNameMain).
+                setOnClickListener( v ->{
+                    Intent intent = new Intent(context, OpenStatistic.class);
+                    intent.putExtra(
+                            "name", tvName.getText().toString()
+                    );
+                    context.startActivity(intent);
+                });
     }
 
     static  class StatisticDiff extends DiffUtil.ItemCallback<Statistic>{

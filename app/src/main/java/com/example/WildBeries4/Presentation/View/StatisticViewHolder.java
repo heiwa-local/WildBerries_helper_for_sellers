@@ -16,7 +16,7 @@ public class StatisticViewHolder extends RecyclerView.ViewHolder {
 
     public StatisticViewHolder(@NonNull View itemView) {
         super(itemView);
-        statisticItemView = itemView.findViewById((R.id.textView));
+        statisticItemView = itemView.findViewById((R.id.tvNameMain));
     }
 
     public void bind(String text){
