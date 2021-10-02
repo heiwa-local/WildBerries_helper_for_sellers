@@ -14,7 +14,7 @@ import java.util.List;
 public class OpenStatisticViewModel extends AndroidViewModel {
 
     private StatisticRepository mRepository;
-    private Statistic statistic;
+    private LiveData<Statistic> statistic;
     private final LiveData<List<Statistic>> AllStatistic;
 
     public OpenStatisticViewModel(Application application) {
@@ -23,8 +23,12 @@ public class OpenStatisticViewModel extends AndroidViewModel {
 
         AllStatistic = mRepository.getAllStatistic();
     }
-    public Statistic getByName(String name){
+
+    public LiveData<Statistic> getByName(String name){
         statistic = mRepository.getByName(name);
         return statistic;
+    }
+    public void deleteByName(String name){
+        mRepository.deleteByName(name);
     }
 }

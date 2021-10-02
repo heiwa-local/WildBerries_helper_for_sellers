@@ -15,7 +15,7 @@ import com.example.WildBeries4.Presentation.Repository.Room.DAO.StatisticDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Statistic.class}, version = 4, exportSchema = false)
+@Database(entities = {Statistic.class}, version = 7, exportSchema = false)
 abstract class StatisticRoomDatabase extends RoomDatabase {
      abstract StatisticDAO StatisticDao();
 

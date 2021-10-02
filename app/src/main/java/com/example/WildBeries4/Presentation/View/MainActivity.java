@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter;
+import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter.StatisticDiff;
 import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     public static final int NEW_STATISTIC_ACTIVITY_REQUEST_CODE = 1;
-
+    private Statistic statistic;
     private StatisticViewModel mStatisticViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == NEW_STATISTIC_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Statistic name = new Statistic(data.getStringExtra(NewStatisticActivity.EXTRA_REPLY));
-            mStatisticViewModel.insert(name);
+            String name = data.getStringExtra("name");
         } else {
             Toast.makeText(
                     getApplicationContext(),

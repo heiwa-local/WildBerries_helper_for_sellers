@@ -4,20 +4,19 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 
-import com.example.WildBeries4.Domain.Model.Statistic;
 import com.example.WildBeries4.Presentation.Repository.Room.StatisticRepository;
 
-import java.util.List;
-
-public class NewStatisticViewModel extends AndroidViewModel {
+public class HolderViewModel extends AndroidViewModel {
     private StatisticRepository mRepository;
 
-    public NewStatisticViewModel(Application application) {
+
+    public HolderViewModel(@NonNull Application application) {
         super(application);
         mRepository = new StatisticRepository(application);
     }
-    public void insert(Statistic name){mRepository.insert(name);}
 
+    public void deleteByName(String name){
+        mRepository.deleteByName(name);
+    }
 }

@@ -6,6 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 @Entity(tableName = "Statistic")
 public class Statistic {
     @PrimaryKey
@@ -13,20 +15,30 @@ public class Statistic {
     @ColumnInfo(name = "name")
     public String name;
     @ColumnInfo
-    public double fullPrice;
+    public String fullPrice;
     @ColumnInfo
-    public double volume;
+    public String volume;
     @ColumnInfo
-    public double onePrice;
+    public String onePrice;
     @ColumnInfo
-    public double procent;
+    public String procent;
     @ColumnInfo
-    public double logistic;
+    public String logistic;
+    @ColumnInfo
+    public String data;
 
-    public Statistic(String name, double fullPrice, double volume) {
+    public Statistic(String name, String fullPrice, String volume) {
         this.name = name;
         this.fullPrice = fullPrice;
         this.volume = volume;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getName() {
@@ -37,48 +49,55 @@ public class Statistic {
         this.name = name;
     }
 
-    public double getFullPrice() {
+    public String getFullPrice() {
         return fullPrice;
     }
 
-    public void setFullPrice(double fullPrice) {
+    public void setFullPrice(String fullPrice) {
         this.fullPrice = fullPrice;
     }
 
-    public double getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(double volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
-    public double getOnePrice(){
+    public String getOnePrice() {
         return onePrice;
     }
 
-    public void setOnePrice(double onePrice){
+    public void setOnePrice(String onePrice) {
         this.onePrice = onePrice;
     }
 
-    public double getProcent(){
+    public String getProcent() {
         return procent;
     }
 
-    public void setProcent(double procent){
+    public void setProcent(String procent) {
         this.procent = procent;
     }
 
-    public double getLogistic(){
+    public String getLogistic() {
         return logistic;
     }
 
-    public void setLogistic(double logistic){
+    public void setLogistic(String logistic) {
         this.logistic = logistic;
     }
 
-    public Statistic(@NonNull String statistic){this.name = statistic;}
+    public Statistic(@NonNull String statistic) {
+        this.name = statistic;
+    }
 
-    public String getStatistic(){return this.name;}
+    public Statistic() {
+    }
+
+    public String getStatistic() {
+        return this.name;
+    }
 
 }

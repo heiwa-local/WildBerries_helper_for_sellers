@@ -2,6 +2,7 @@ package com.example.WildBeries4.Presentation.Repository.Room.DAO;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -22,5 +23,8 @@ public interface StatisticDAO {
     LiveData<List<Statistic>> getStatistic();
 
     @Query("SELECT * FROM statistic WHERE name = :name")
-    Statistic getByName(String name);
+    LiveData<Statistic> getByName(String name);
+
+    @Query("DELETE FROM statistic WHERE name = :name")
+    void deleteByName(String name);
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class StatisticRepository {
     private StatisticDAO m1name;
     private LiveData<List<Statistic>> AllStatistic;
-    private Statistic statistic;
+    private LiveData<Statistic> statistic;
 
     public StatisticRepository(Application application) {
         StatisticRoomDatabase db = StatisticRoomDatabase.getDatabase(application);
@@ -28,8 +28,13 @@ public class StatisticRepository {
             m1name.insert(name);
         });
     }
-    public Statistic getByName(String name){
+    public LiveData<Statistic> getByName(String name){
         statistic = m1name.getByName(name);
         return statistic;
+    }
+    public void deleteByName(String name){
+        StatisticRoomDatabase.databaseWriteExecutor.execute(() -> {
+            m1name.deleteByName(name);
+        });
     }
 }

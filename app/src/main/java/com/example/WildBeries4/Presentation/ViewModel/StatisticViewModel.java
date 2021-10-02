@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
 import com.example.WildBeries4.Presentation.Repository.Room.StatisticRepository;
+import com.example.WildBeries4.Presentation.View.NewStatisticActivity;
 
 import java.util.List;
 
@@ -24,4 +25,7 @@ public class StatisticViewModel extends AndroidViewModel {
     public LiveData<List<Statistic>> getAllStatistic(){return AllStatistic;}
 
     public void insert(Statistic name){mRepository.insert(name);}
+    public void deleteByName(String name){
+        mRepository.deleteByName(name);
+    }
 }
