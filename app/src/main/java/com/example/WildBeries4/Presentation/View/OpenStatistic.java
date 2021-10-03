@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.MotionEvent;
@@ -41,7 +42,7 @@ public class OpenStatistic extends AppCompatActivity {
 
 
     LiveData<Statistic> statistic;
-    private int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 100;
     private OpenStatisticViewModel mOpenStatisticViewModel;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class OpenStatistic extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
         String name = arguments.get("name").toString();
         statistic =  mOpenStatisticViewModel.getByName(name);
-
+        Uri uri = CalendarContract.Calendars.CONTENT_URI;
 
         statistic.observe(this, new Observer<Statistic>() {
             @Override
@@ -95,11 +96,11 @@ public class OpenStatistic extends AppCompatActivity {
                     cv.put(CalendarContract.Events.TITLE, "Поставка");
                     cv.put(CalendarContract.Events.DESCRIPTION, statistic.getName() + " - " + statistic.getVolume() + " штук \nПодробности в приложении WildBerries Statistic");
                     cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
-                    cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+100012060);
-                    cv.put(CalendarContract.Events.CALENDAR_ID, 2);
+                    cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000000000);
+                    cv.put(CalendarContract.Events.CALENDAR_ID, 1);
                     cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
                     cr.insert(CalendarContract.Events.CONTENT_URI, cv);
-                    Toast.makeText(OpenStatistic.this, "Successfully added", Toast.LENGTH_SHORT).show();}
+                    Toast.makeText(OpenStatistic.this, String.valueOf(startTime.getTimeInMillis()), Toast.LENGTH_SHORT).show();}
             }
         });
             }
