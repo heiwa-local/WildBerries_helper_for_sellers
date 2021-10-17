@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import com.example.WildBeries4.R;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Random;
 
 public class NewStatisticActivity extends AppCompatActivity {
     public NewStatisticViewModel mNewStatisticViewModel;
@@ -39,6 +41,8 @@ public class NewStatisticActivity extends AppCompatActivity {
     private EditText mTvDataEnter;
 
     private LocalDateTime time;
+    private Color color;
+    private Integer r,g,b;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class NewStatisticActivity extends AppCompatActivity {
         mTvLogisticEnter = findViewById(R.id.tvLogisticEnter);
         mTvDataEnter = findViewById(R.id.tvDataEnter);
 
+
+
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
             Intent replyIntent = new Intent();
@@ -62,13 +68,22 @@ public class NewStatisticActivity extends AppCompatActivity {
                 setResult(RESULT_CANCELED, replyIntent);
             } else {
                 statistic.setName(mTvNameEnter.getText().toString());
-                statistic.fullPrice = mTvFullPriceEnter.getText().toString();
-                statistic.volume = mTvVolumeEnter.getText().toString();
-                statistic.onePrice = mTvPriceWBEnter.getText().toString();
-                statistic.procent = mTvPercentEnter.getText().toString();
-                statistic.logistic =mTvLogisticEnter.getText().toString();
+                statistic.fullPrice = Double.parseDouble(mTvFullPriceEnter.getText().toString());
+                statistic.volume = Integer.parseInt(mTvVolumeEnter.getText().toString());
+                statistic.onePrice = Double.parseDouble(mTvPriceWBEnter.getText().toString());
+                statistic.procent = Double.parseDouble(mTvPercentEnter.getText().toString());
+                statistic.logistic = Double.parseDouble(mTvLogisticEnter.getText().toString());
                 statistic.data = mTvDataEnter.getText().toString();
-
+//                if (mNewStatisticViewModel.exists(mTvNameEnter.getText().toString())){
+//                    color = mNewStatisticViewModel.getByName(mTvNameEnter.getText().toString()).getValue().getColor();
+//                }
+//                else {
+//                    Random rand = new Random();
+//                    color.red(rand.nextInt(256));
+//                    color.green(rand.nextInt(256));
+//                    color.blue(rand.nextInt(256));
+//                }
+//                statistic.color = color;
                 mNewStatisticViewModel.insert(statistic);
 
                 replyIntent.putExtra("name", statistic.name);

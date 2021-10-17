@@ -25,7 +25,7 @@ public class StatisticViewModel extends AndroidViewModel {
     public LiveData<List<Statistic>> getAllStatistic(){return AllStatistic;}
 
     public void insert(Statistic name){mRepository.insert(name);}
-    public void deleteByName(String name){
-        mRepository.deleteByName(name);
+    public void deleteByName(String name, long id){
+        mRepository.deleteByName(name, id);
     }
 }

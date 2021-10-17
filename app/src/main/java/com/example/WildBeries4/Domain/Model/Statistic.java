@@ -1,6 +1,8 @@
 package com.example.WildBeries4.Domain.Model;
 
 
+import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,27 +12,40 @@ import java.util.List;
 
 @Entity(tableName = "Statistic")
 public class Statistic {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public long id;
     @NonNull
     @ColumnInfo(name = "name")
     public String name;
     @ColumnInfo
-    public String fullPrice;
+    public double fullPrice;
     @ColumnInfo
-    public String volume;
+    public int volume;
     @ColumnInfo
-    public String onePrice;
+    public double onePrice;
     @ColumnInfo
-    public String procent;
+    public double procent;
     @ColumnInfo
-    public String logistic;
+    public double logistic;
     @ColumnInfo
     public String data;
 
-    public Statistic(String name, String fullPrice, String volume) {
+
+
+//    @ColumnInfo
+//    public Color color;
+
+    public Statistic(String name, double fullPrice, int volume) {
         this.name = name;
         this.fullPrice = fullPrice;
         this.volume = volume;
+    }
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getData() {
@@ -49,43 +64,43 @@ public class Statistic {
         this.name = name;
     }
 
-    public String getFullPrice() {
+    public double getFullPrice() {
         return fullPrice;
     }
 
-    public void setFullPrice(String fullPrice) {
+    public void setFullPrice(double fullPrice) {
         this.fullPrice = fullPrice;
     }
 
-    public String getVolume() {
+    public int getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 
-    public String getOnePrice() {
+    public Double getOnePrice() {
         return onePrice;
     }
 
-    public void setOnePrice(String onePrice) {
+    public void setOnePrice(Double onePrice) {
         this.onePrice = onePrice;
     }
 
-    public String getProcent() {
+    public Double getProcent() {
         return procent;
     }
 
-    public void setProcent(String procent) {
+    public void setProcent(Double procent) {
         this.procent = procent;
     }
 
-    public String getLogistic() {
+    public Double getLogistic() {
         return logistic;
     }
 
-    public void setLogistic(String logistic) {
+    public void setLogistic(Double logistic) {
         this.logistic = logistic;
     }
 
@@ -100,4 +115,11 @@ public class Statistic {
         return this.name;
     }
 
+//    public Color getColor() {
+//        return color;
+//    }
+//
+//    public void setColor(Color color) {
+//        this.color = color;
+//    }
 }

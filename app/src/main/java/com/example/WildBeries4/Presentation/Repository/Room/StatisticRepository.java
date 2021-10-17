@@ -32,9 +32,14 @@ public class StatisticRepository {
         statistic = m1name.getByName(name);
         return statistic;
     }
-    public void deleteByName(String name){
+    public void deleteByName(String name, long id){
         StatisticRoomDatabase.databaseWriteExecutor.execute(() -> {
-            m1name.deleteByName(name);
+            m1name.deleteByNameAndId(name,id);
         });
     }
+    public LiveData<Double> getTotalSum(){
+        return m1name.getTotalSum();
+    }
+
+    public LiveData<Integer> getTotalVolume(){ return m1name.getTotalVolume();}
 }

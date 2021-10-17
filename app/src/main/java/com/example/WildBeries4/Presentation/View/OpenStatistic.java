@@ -12,6 +12,7 @@ import android.provider.CalendarContract;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class OpenStatistic extends AppCompatActivity {
     TextView tvProcentView;
     TextView tvLogisticView;
     TextView tvDataView;
-    Button btnAddToCalendar;
+    ImageButton btnAddToCalendar;
 
 
     LiveData<Statistic> statistic;
@@ -67,11 +68,11 @@ public class OpenStatistic extends AppCompatActivity {
             @Override
             public void onChanged(Statistic statistic) {
                 tvDataView.setText("Поставка от: " + statistic.getData());
-                tvFullPriceView.setText(statistic.getFullPrice()+" рублей");
-                tvVolumeView.setText(statistic.getVolume() + " штук");
-                tvOnePriceView.setText(statistic.getOnePrice() + " рублей");
-                tvProcentView.setText(statistic.getProcent() + "%");
-                tvLogisticView.setText(statistic.getLogistic() + " рублей");
+                tvFullPriceView.setText(statistic.getFullPrice()+"\n₽");
+                tvVolumeView.setText(statistic.getVolume() + "\nштук");
+                tvOnePriceView.setText(statistic.getOnePrice() + "\n₽");
+                tvProcentView.setText(statistic.getProcent() + "\n%");
+                tvLogisticView.setText(statistic.getLogistic() + "\n₽");
 
 
         btnAddToCalendar.setOnClickListener(new View.OnClickListener() {
@@ -93,14 +94,14 @@ public class OpenStatistic extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    cv.put(CalendarContract.Events.TITLE, "Поставка");
-                    cv.put(CalendarContract.Events.DESCRIPTION, statistic.getName() + " - " + statistic.getVolume() + " штук \nПодробности в приложении WildBerries Statistic");
+                    cv.put(CalendarContract.Events.TITLE, "Поставка - " + statistic.getName());
+                    cv.put(CalendarContract.Events.DESCRIPTION, statistic.getVolume() + "штук на сумму " + statistic.getFullPrice() + " рублей \nПодробности в приложении WildBerries Statistic");
                     cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
-                    cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000000000);
+                    cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+100);
                     cv.put(CalendarContract.Events.CALENDAR_ID, 1);
                     cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
                     cr.insert(CalendarContract.Events.CONTENT_URI, cv);
-                    Toast.makeText(OpenStatistic.this, String.valueOf(startTime.getTimeInMillis()), Toast.LENGTH_SHORT).show();}
+                    Toast.makeText(OpenStatistic.this, "Added to calendar", Toast.LENGTH_SHORT).show();}
             }
         });
             }

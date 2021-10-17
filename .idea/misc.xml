@@ -11,7 +11,8 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17879554701672665" />
+        <entry key="app/src/main/res/layout/activity_converter.xml" value="0.3128008351889315" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3752913752913753" />
         <entry key="app/src/main/res/layout/activity_new_food.xml" value="0.3596188633235959" />
         <entry key="app/src/main/res/layout/activity_new_statistic.xml" value="0.34461780466461756" />
         <entry key="app/src/main/res/layout/open_statistic.xml" value="0.3696713355503419" />

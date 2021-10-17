@@ -25,6 +25,12 @@ public interface StatisticDAO {
     @Query("SELECT * FROM statistic WHERE name = :name")
     LiveData<Statistic> getByName(String name);
 
-    @Query("DELETE FROM statistic WHERE name = :name")
-    void deleteByName(String name);
+    @Query("DELETE FROM statistic WHERE name = :name AND id = :id")
+    void deleteByNameAndId(String name,long id);
+
+    @Query("SELECT SUM(fullPrice) as total FROM statistic")
+    LiveData<Double> getTotalSum();
+
+    @Query("SELECT SUM(volume) as total FROM statistic")
+    LiveData<Integer> getTotalVolume();
 }

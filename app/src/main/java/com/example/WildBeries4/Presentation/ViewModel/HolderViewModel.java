@@ -16,7 +16,4 @@ public class HolderViewModel extends AndroidViewModel {
         mRepository = new StatisticRepository(application);
     }
 
-    public void deleteByName(String name){
-        mRepository.deleteByName(name);
-    }
 }

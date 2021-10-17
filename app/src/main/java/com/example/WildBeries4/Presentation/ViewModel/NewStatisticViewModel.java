@@ -13,11 +13,17 @@ import java.util.List;
 
 public class NewStatisticViewModel extends AndroidViewModel {
     private StatisticRepository mRepository;
+    public LiveData<Statistic> statistic;
 
     public NewStatisticViewModel(Application application) {
         super(application);
         mRepository = new StatisticRepository(application);
     }
     public void insert(Statistic name){mRepository.insert(name);}
+
+    public LiveData<Statistic> getByName(String name){
+        statistic = mRepository.getByName(name);
+        return statistic;
+    }
 
 }

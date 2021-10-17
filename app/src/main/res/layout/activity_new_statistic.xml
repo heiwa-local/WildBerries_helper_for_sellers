@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C4000000"
+    android:background="#C4FFFFFF"
     android:gravity="center|start|center_vertical"
     android:orientation="vertical">
 
@@ -16,8 +16,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Наименование товара"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -28,8 +28,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Стоимость поставки"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -40,8 +40,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Количество единиц"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -52,8 +52,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Цена на маркетплейсе"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -64,8 +64,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Комиссия на данную категорию"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -76,8 +76,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Стоимость логистики"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <EditText
@@ -88,8 +88,8 @@
         android:fontFamily="sans-serif-light"
         android:hint="Дата поставки"
         android:inputType="textAutoComplete"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#72FFFFFF"
+        android:textColor="#94000000"
+        android:textColorHint="#94000000"
         android:textSize="18sp" />
 
     <Button
@@ -97,10 +97,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/big_padding"
-        android:background="@color/colorPrimary"
+        android:background="#94000000"
         android:backgroundTint="#9C27B0"
         android:text="@string/button_save"
-        android:textColor="#6AFFFFFF"
+        android:textColor="#FFFFFF"
         android:textColorHint="#673AB7"
         android:textColorLink="#FFFFFF" />
 

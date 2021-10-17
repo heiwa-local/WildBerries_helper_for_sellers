@@ -28,7 +28,4 @@ public class OpenStatisticViewModel extends AndroidViewModel {
         statistic = mRepository.getByName(name);
         return statistic;
     }
-    public void deleteByName(String name){
-        mRepository.deleteByName(name);
-    }
 }

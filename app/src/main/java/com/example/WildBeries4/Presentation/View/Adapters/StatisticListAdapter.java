@@ -42,15 +42,19 @@ public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHo
     @Override
     public void onBindViewHolder(@NonNull StatisticViewHolder holder, int position) {
         Statistic current = getItem(position);
-        holder.bind(current.getStatistic());
+        holder.bind(current.getName(),current.getId());
         Context context = holder.itemView.getContext();
         TextView tvName = holder.itemView.findViewById(R.id.tvNameMain);
+        TextView tvId = holder.itemView.findViewById(R.id.tvId);
 
         holder.itemView.findViewById(R.id.tvNameMain).
                 setOnClickListener( v ->{
                     Intent intent = new Intent(context, OpenStatistic.class);
                     intent.putExtra(
                             "name", tvName.getText().toString()
+                    );
+                    intent.putExtra(
+                            "id", tvId.getText().toString()
                     );
                     context.startActivity(intent);
                 });
