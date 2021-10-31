@@ -14,7 +14,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.WildBeries4.Domain.Model.PostPojo;
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.ApiGETTER;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.NetworkService;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.NetworkService;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.RetrofitInterface;
 import com.example.WildBeries4.Presentation.Repository.Room.StatisticRoomDatabase;
 import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter;
 import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter.StatisticDiff;
@@ -22,6 +27,14 @@ import com.example.WildBeries4.Presentation.ViewModel.MainActivityViewModel;
 import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.JsonObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final int NEW_STATISTIC_ACTIVITY_REQUEST_CODE = 1;
@@ -30,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
     private StatisticViewModel mStatisticViewModel;
     private MainActivityViewModel mMainActivityViewModel;
     private static volatile StatisticRoomDatabase INSTANCE;
+    private LiveData<List<PostPojo>> postPojo;
+    private PostPojo onePostPojo;
 
     String allSum;
     double allTotalSum;
     TextView tvTotalSum;
     TextView tvTotalVolume;
     Button btnConverter;
+    TextView tv11tv11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mStatisticViewModel = new ViewModelProvider(this).get(StatisticViewModel.class);
         mMainActivityViewModel = new MainActivityViewModel(new Application());
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener( view -> {
+        fab.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, NewStatisticActivity.class);
             startActivityForResult(intent, NEW_STATISTIC_ACTIVITY_REQUEST_CODE);
         });
@@ -63,26 +79,16 @@ public class MainActivity extends AppCompatActivity {
         });
         tvTotalSum = findViewById(R.id.tvTotalSum);
         tvTotalVolume = findViewById(R.id.tvTotalWant);
+        tv11tv11 = findViewById(R.id.tv11tv11);
+        postPojo = mMainActivityViewModel.getListFromWB();
 
-//        mMainActivityViewModel.allSupply().observe(this, new Observer<Double>() {
-//            @Override
-//            public void onChanged(Double aDouble) {
-//                tvTotalSum.setText(aDouble.toString()+"\n₽");
-//            }
-//        });
-//        mMainActivityViewModel.getTotalVolume().observe(this, new Observer<Integer>() {
-//            @Override
-//            public void onChanged(Integer integer) {
-//                tvTotalVolume.setText(integer.toString()+"\nшт.");
-//            }
-//        });
-
-        btnConverter.setOnClickListener(view ->{
-            Intent intent = new Intent(MainActivity.this, ConverterActivity.class);
-            startActivity(intent);
+        postPojo.observe(this, new Observer<List<PostPojo>>() {
+            @Override
+            public void onChanged(List<PostPojo> postPojos) {
+                onePostPojo = postPojos.get(0);
+                tv11tv11.setText(onePostPojo.getBrand());
+            }
         });
-
-
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

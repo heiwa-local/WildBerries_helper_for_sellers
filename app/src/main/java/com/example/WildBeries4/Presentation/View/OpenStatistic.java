@@ -22,7 +22,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
+import com.example.WildBeries4.Domain.Model.PostPojo;
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.ApiGETTER;
+import com.example.WildBeries4.Presentation.Repository.Retrofit.NetworkService;
 import com.example.WildBeries4.Presentation.ViewModel.OpenStatisticViewModel;
 import com.example.WildBeries4.R;
 
@@ -40,7 +43,7 @@ public class OpenStatistic extends AppCompatActivity {
     TextView tvLogisticView;
     TextView tvDataView;
     ImageButton btnAddToCalendar;
-
+    List<PostPojo> postPojo;
 
     LiveData<Statistic> statistic;
     private int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 100;
