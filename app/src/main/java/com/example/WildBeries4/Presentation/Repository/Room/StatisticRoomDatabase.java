@@ -9,13 +9,14 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.Domain.Model.UsersDTO;
 import com.example.WildBeries4.Presentation.Repository.Room.DAO.StatisticDAO;
 ;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Statistic.class}, version = 10, exportSchema = false)
+@Database(entities = {Statistic.class, UsersDTO.class}, version = 12, exportSchema = false)
 public abstract class StatisticRoomDatabase extends RoomDatabase {
      abstract StatisticDAO StatisticDao();
 
@@ -46,7 +47,9 @@ public abstract class StatisticRoomDatabase extends RoomDatabase {
                 dao.deleteAll();
 
                 Statistic name = new Statistic("Water");
+//                UsersDTO firstName = new UsersDTO("IVAN");
                 dao.insert(name);
+//                dao.insertUser(firstName);
 
             });
         }

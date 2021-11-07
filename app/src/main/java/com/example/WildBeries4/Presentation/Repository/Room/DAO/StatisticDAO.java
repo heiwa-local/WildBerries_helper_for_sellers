@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
+import com.example.WildBeries4.Domain.Model.UsersDTO;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ import java.util.List;
 public interface StatisticDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Statistic statistic);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertUser(UsersDTO usersDTO);
 
     @Query("DELETE FROM Statistic")
     void deleteAll();
@@ -33,4 +37,20 @@ public interface StatisticDAO {
 
     @Query("SELECT SUM(volume) as total FROM statistic")
     LiveData<Integer> getTotalVolume();
+
+    //USERS TABLE
+
+    @Query("SELECT * FROM Users ORDER BY firstName ASC")
+    LiveData<List<UsersDTO>> getAllUsers();
+
+    @Query("SELECT * FROM Users WHERE email = :email AND password = :password")
+    LiveData<UsersDTO> getUserByEmailAndPassword(String email, String password);
+
+    @Query("SELECT * FROM Users WHERE email = :email AND role = :role")
+    LiveData<UsersDTO> getUserByEmailAndRole(String email, String role);
+
+    @Query("DELETE FROM Users")
+    void deleteAllUsers();
+    @Insert
+    void addUser(UsersDTO usersDTO);
 }

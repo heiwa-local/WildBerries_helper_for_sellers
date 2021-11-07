@@ -11,11 +11,15 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout/activity_auth.xml" value="0.34341683879924473" />
         <entry key="app/src/main/res/layout/activity_converter.xml" value="0.3128008351889315" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.18476947533415083" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3752913752913753" />
         <entry key="app/src/main/res/layout/activity_new_food.xml" value="0.3596188633235959" />
         <entry key="app/src/main/res/layout/activity_new_statistic.xml" value="0.34461780466461756" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.42964880483313383" />
+        <entry key="app/src/main/res/layout/auth.xml" value="0.3004168038966048" />
+        <entry key="app/src/main/res/layout/fragment_log_in.xml" value="0.29541800763714826" />
         <entry key="app/src/main/res/layout/open_statistic.xml" value="0.3696713355503419" />
         <entry key="app/src/main/res/layout/recyclerview_item.xml" value="0.3090121045655227" />
       </map>

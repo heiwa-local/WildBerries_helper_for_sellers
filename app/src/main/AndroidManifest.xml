@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.WildBeries4">
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,19 +13,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
-
         <activity
-            android:name=".Presentation.View.MainActivity"
-            android:label="WildBerries Statistics">
+            android:name=".Presentation.View.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.View.AuthActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Presentation.View.MainActivity"
+            android:label="WildBerries Statistics"></activity>
         <activity android:name=".Presentation.View.NewStatisticActivity" />
         <activity android:name=".Presentation.View.OpenStatistic" />
-        <activity android:name=".Presentation.View.ConverterActivity" />
     </application>
 
 </manifest>
