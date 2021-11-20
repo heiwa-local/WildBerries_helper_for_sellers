@@ -84,5 +84,8 @@ public class UsersDTO {
         this.email = email;
         this.password = password;
     }
+    public String getUsers(){
+        return this.email;
+    }
 
 }

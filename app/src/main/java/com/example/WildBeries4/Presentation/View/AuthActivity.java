@@ -51,8 +51,6 @@ public class AuthActivity extends AppCompatActivity {
 
         mAuthActivityViewModel = new AuthActivityViewModel(getApplication());
 
-//        mAuthActivityViewModel.deleteAllUsers();
-
         ibtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,9 +69,21 @@ public class AuthActivity extends AppCompatActivity {
                         public void onChanged(UsersDTO usersDTO) {
                             usersDTOFromDB.email = usersDTO.email;
                             usersDTOFromDB.password = usersDTO.password;
+                            usersDTOFromDB.role = usersDTO.role;
                             if (!(usersDTOFromDB == null)) {
-                                Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-                                startActivity(intent);
+                                if(usersDTOFromDB.role.equals("User")) {
+                                    Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
+                                if(usersDTOFromDB.role.equals("Admin")){
+                                    Intent intent = new Intent(AuthActivity.this,AdminUserListActivity.class);
+                                    startActivity(intent);
+                                }
+                                if(usersDTOFromDB.role.equals("GoogleUser")){
+                                    Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
+
                             } else {
                                 Toast.makeText(AuthActivity.this, "Пароль или логин неправилен",
                                         Toast.LENGTH_SHORT).show();
@@ -121,7 +131,14 @@ public class AuthActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             UsersDTO usersDTO1 = new UsersDTO("GoogleUser",account.getEmail(),account.getId(),account.getDisplayName(),account.getFamilyName());
-            mAuthActivityViewModel.addUser(usersDTO1);
+            mAuthActivityViewModel.getUserByEmailAndRole(usersDTO1.email,usersDTO1.role).observe(AuthActivity.this, new Observer<UsersDTO>() {
+                @Override
+                public void onChanged(UsersDTO usersDTO) {
+                    if (usersDTO.email.isEmpty()){
+                        mAuthActivityViewModel.addUser(usersDTO1);
+                    }
+                }
+            });
             Intent intent = new Intent(AuthActivity.this, MainActivity.class);
             startActivity(intent);
 //            UsersDTO usersDTO = new UsersDTO(account.getEmail(),"GoogleUser",account.getId(),account.getDisplayName(),account.getFamilyName());

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/dumas/FoodProj/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.21875" />
         <entry key="..\:/Users/dumas/FoodProj/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/dumas/FoodProj/app/src/main/res/layout/activity_new_food.xml" value="0.1" />
@@ -11,10 +12,12 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.20652173913043478" />
+        <entry key="app/src/main/res/layout/activity_admin_user_list.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.34341683879924473" />
         <entry key="app/src/main/res/layout/activity_converter.xml" value="0.3128008351889315" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18476947533415083" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3752913752913753" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4570651164787314" />
         <entry key="app/src/main/res/layout/activity_new_food.xml" value="0.3596188633235959" />
         <entry key="app/src/main/res/layout/activity_new_statistic.xml" value="0.34461780466461756" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.42964880483313383" />
@@ -22,6 +25,7 @@
         <entry key="app/src/main/res/layout/fragment_log_in.xml" value="0.29541800763714826" />
         <entry key="app/src/main/res/layout/open_statistic.xml" value="0.3696713355503419" />
         <entry key="app/src/main/res/layout/recyclerview_item.xml" value="0.3090121045655227" />
+        <entry key="app/src/main/res/layout/user_recyclerview_item.xml" value="0.2440203686149908" />
       </map>
     </option>
   </component>

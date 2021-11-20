@@ -1,12 +1,8 @@
 package com.example.WildBeries4.Presentation.View.Adapters;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +11,8 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
-import com.example.WildBeries4.Presentation.Repository.Room.DAO.StatisticDAO;
 import com.example.WildBeries4.Presentation.View.OpenStatistic;
 import com.example.WildBeries4.Presentation.View.StatisticViewHolder;
-import com.example.WildBeries4.Presentation.ViewModel.HolderViewModel;
-import com.example.WildBeries4.Presentation.ViewModel.OpenStatisticViewModel;
-import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
 
 public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHolder> {

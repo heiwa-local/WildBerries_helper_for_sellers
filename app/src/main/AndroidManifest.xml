@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar">
         <activity
+            android:name=".Presentation.View.AdminUserListActivity"
+            android:exported="true" />
+        <activity
             android:name=".Presentation.View.RegisterActivity"
             android:exported="true" />
         <activity
@@ -27,7 +30,7 @@
         </activity>
         <activity
             android:name=".Presentation.View.MainActivity"
-            android:label="WildBerries Statistics"></activity>
+            android:label="WildBerries Statistics" />
         <activity android:name=".Presentation.View.NewStatisticActivity" />
         <activity android:name=".Presentation.View.OpenStatistic" />
     </application>

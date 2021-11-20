@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnConverter = findViewById(R.id.btnConverter);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final StatisticListAdapter adapter = new StatisticListAdapter(new StatisticListAdapter.StatisticDiff());
