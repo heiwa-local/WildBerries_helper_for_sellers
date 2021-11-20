@@ -21,8 +21,8 @@ import com.example.WildBeries4.Presentation.Repository.Retrofit.NetworkService;
 import com.example.WildBeries4.Presentation.Repository.Retrofit.NetworkService;
 import com.example.WildBeries4.Presentation.Repository.Retrofit.RetrofitInterface;
 import com.example.WildBeries4.Presentation.Repository.Room.StatisticRoomDatabase;
-import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter;
-import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter.StatisticDiff;
+import com.example.WildBeries4.Presentation.View.Adapters.PostPojoListAdapter;
+import com.example.WildBeries4.Presentation.View.Adapters.PostPojoListAdapter.PostPojoDiff;
 import com.example.WildBeries4.Presentation.ViewModel.MainActivityViewModel;
 import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final StatisticListAdapter adapter = new StatisticListAdapter(new StatisticListAdapter.StatisticDiff());
+        final PostPojoListAdapter adapter = new PostPojoListAdapter(new PostPojoListAdapter.PostPojoDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -71,15 +71,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, NewStatisticActivity.class);
             startActivityForResult(intent, NEW_STATISTIC_ACTIVITY_REQUEST_CODE);
         });
-        mStatisticViewModel.getAllStatistic().observe(this, statistics -> {
+
+        postPojo = mMainActivityViewModel.getListFromWB();
+
+        postPojo.observe(this, PostPogos -> {
             // Update the cached copy of the words in the adapter.
-            adapter.submitList(statistics);
+            adapter.submitList(PostPogos);
 
         });
         tvTotalSum = findViewById(R.id.tvTotalSum);
         tvTotalVolume = findViewById(R.id.tvTotalWant);
         tv11tv11 = findViewById(R.id.tv11tv11);
-        postPojo = mMainActivityViewModel.getListFromWB();
 
         postPojo.observe(this, new Observer<List<PostPojo>>() {
             @Override

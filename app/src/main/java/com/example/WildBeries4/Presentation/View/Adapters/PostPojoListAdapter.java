@@ -10,31 +10,33 @@ import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.WildBeries4.Domain.Model.PostPojo;
 import com.example.WildBeries4.Domain.Model.Statistic;
 import com.example.WildBeries4.Presentation.View.OpenStatistic;
-import com.example.WildBeries4.Presentation.View.StatisticViewHolder;
+import com.example.WildBeries4.Presentation.View.PostPojoViewHolder;
+import com.example.WildBeries4.Presentation.View.PostPojoViewHolder;
 import com.example.WildBeries4.R;
 
-public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHolder> {
+public class PostPojoListAdapter extends ListAdapter<PostPojo, PostPojoViewHolder> {
 
-    public StatisticListAdapter(@NonNull DiffUtil.ItemCallback<Statistic> diffCallback) {
+    public PostPojoListAdapter(@NonNull DiffUtil.ItemCallback<PostPojo> diffCallback) {
         super(diffCallback);
     }
 
-    protected StatisticListAdapter(@NonNull AsyncDifferConfig<Statistic> config) {
+    protected PostPojoListAdapter(@NonNull AsyncDifferConfig<PostPojo> config) {
         super(config);
     }
 
     @NonNull
     @Override
-    public StatisticViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return StatisticViewHolder.create(parent);
+    public PostPojoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return PostPojoViewHolder.create(parent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StatisticViewHolder holder, int position) {
-        Statistic current = getItem(position);
-        holder.bind(current.getName(),current.getId());
+    public void onBindViewHolder(@NonNull PostPojoViewHolder holder, int position) {
+        PostPojo current = getItem(position);
+        holder.bind(current.getSupplierArticle(),Long.parseLong(current.getInWayToClient()));
         Context context = holder.itemView.getContext();
         TextView tvName = holder.itemView.findViewById(R.id.tvNameMain);
         TextView tvId = holder.itemView.findViewById(R.id.tvId);
@@ -52,16 +54,16 @@ public class StatisticListAdapter extends ListAdapter<Statistic, StatisticViewHo
                 });
     }
 
-    public static  class StatisticDiff extends DiffUtil.ItemCallback<Statistic>{
+    public static  class PostPojoDiff extends DiffUtil.ItemCallback<PostPojo>{
         @Override
-        public boolean areItemsTheSame(@NonNull Statistic oldItem,
-                                       @NonNull Statistic newItem){
+        public boolean areItemsTheSame(@NonNull PostPojo oldItem,
+                                       @NonNull PostPojo newItem){
             return oldItem == newItem;
         }
         @Override
-        public boolean areContentsTheSame(@NonNull Statistic oldItem,
-                                          @NonNull Statistic newItem){
-            return  oldItem.getStatistic().equals(newItem.getStatistic());
+        public boolean areContentsTheSame(@NonNull PostPojo oldItem,
+                                          @NonNull PostPojo newItem){
+            return  oldItem.getPostPojo().equals(newItem.getPostPojo());
         }
     }
 }

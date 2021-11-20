@@ -242,4 +242,8 @@ public class PostPojo {
     @Expose
     private String warehouseName;
 
+    public String getPostPojo (){
+        return this.supplierArticle;
+    }
+
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.WildBeries4.Presentation.View.Adapters.StatisticListAdapter;
+import com.example.WildBeries4.Presentation.View.Adapters.PostPojoListAdapter;
 import com.example.WildBeries4.Presentation.View.Adapters.UserListAdapter;
 import com.example.WildBeries4.Presentation.ViewModel.StatisticViewModel;
 import com.example.WildBeries4.R;
