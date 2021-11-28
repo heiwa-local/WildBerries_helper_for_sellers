@@ -15,23 +15,11 @@
         android:background="#37000000"
         android:gravity="center"
         android:scrollbarSize="4sp"
-        android:text="Поставки"
+        android:text="Товары"
         android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="602dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:backgroundTint="#75FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -43,86 +31,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="Сумма всех \nпоставок"
-                    android:textColor="#43000000"
-                    android:textColorHint="#00000000"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/tvTotalSum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal|top"
-                    android:text="0\n₽"
-                    android:textSize="35dp" />
-
-                <TextView
-                    android:id="@+id/tv11tv11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="0%"
-                android:textSize="100dp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Прогнозируемая выручка"
-                    android:textColor="#43000000"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:id="@+id/tvTotalWant"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal|top"
-                    android:text="0\n₽"
-                    android:textSize="35dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#00000000"
             android:padding="40dp"
             tools:listitem="@layout/recyclerview_item">
@@ -149,12 +61,13 @@
             android:text="Поставки" />
 
         <Button
-            android:id="@+id/btnSalesWindow"
+            android:id="@+id/btnUserListForAdmin"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#94000000"
-            android:text="Продажи" />
+            android:text="Список пользователей"
+            android:visibility="visible" />
 
     </LinearLayout>
 

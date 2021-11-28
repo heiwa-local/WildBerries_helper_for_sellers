@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.WildBeries4.Domain.Model.Statistic;
 import com.example.WildBeries4.Domain.Model.UsersDTO;
-import com.example.WildBeries4.Presentation.View.OpenStatistic;
 import com.example.WildBeries4.Presentation.View.UserViewHolder;
 import com.example.WildBeries4.R;
 

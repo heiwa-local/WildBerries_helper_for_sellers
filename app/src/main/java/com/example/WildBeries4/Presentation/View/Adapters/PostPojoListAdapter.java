@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.WildBeries4.Domain.Model.PostPojo;
 import com.example.WildBeries4.Domain.Model.Statistic;
-import com.example.WildBeries4.Presentation.View.OpenStatistic;
+import com.example.WildBeries4.Presentation.View.OpenPostPojo;
 import com.example.WildBeries4.Presentation.View.PostPojoViewHolder;
 import com.example.WildBeries4.Presentation.View.PostPojoViewHolder;
 import com.example.WildBeries4.R;
@@ -36,19 +36,72 @@ public class PostPojoListAdapter extends ListAdapter<PostPojo, PostPojoViewHolde
     @Override
     public void onBindViewHolder(@NonNull PostPojoViewHolder holder, int position) {
         PostPojo current = getItem(position);
-        holder.bind(current.getSupplierArticle(),Long.parseLong(current.getInWayToClient()));
+        holder.bind(current.getSupplierArticle());
         Context context = holder.itemView.getContext();
         TextView tvName = holder.itemView.findViewById(R.id.tvNameMain);
-        TextView tvId = holder.itemView.findViewById(R.id.tvId);
 
         holder.itemView.findViewById(R.id.tvNameMain).
                 setOnClickListener( v ->{
-                    Intent intent = new Intent(context, OpenStatistic.class);
+                    Intent intent = new Intent(context, OpenPostPojo.class);
                     intent.putExtra(
-                            "name", tvName.getText().toString()
+                            "LastChangeDate", current.getLastChangeDate()
                     );
                     intent.putExtra(
-                            "id", tvId.getText().toString()
+                            "SupplierArticle", current.getSupplierArticle()
+                    );
+                    intent.putExtra(
+                            "TechSize", current.getTechSize()
+                    );
+                    intent.putExtra(
+                            "Barcode", current.getBarcode()
+                    );
+                    intent.putExtra(
+                            "Quantity", current.getQuantity()
+                    );
+                    intent.putExtra(
+                            "IsSupply", current.getIsSupply()
+                    );
+                    intent.putExtra(
+                            "IsRealization", current.getIsRealization()
+                    );
+                    intent.putExtra(
+                            "QuantityFull", current.getQuantityFull()
+                    );
+                    intent.putExtra(
+                            "QuantityNotInOrders", current.getQuantityNotInOrders()
+                    );
+                    intent.putExtra(
+                            "WarehouseName", current.getWarehouseName()
+                    );
+                    intent.putExtra(
+                            "InWayToClient", current.getInWayToClient()
+                    );
+                    intent.putExtra(
+                            "InWayFromClient", current.getInWayFromClient()
+                    );
+                    intent.putExtra(
+                            "NmId", current.getNmId()
+                    );
+                    intent.putExtra(
+                            "Subject", current.getSubject()
+                    );
+                    intent.putExtra(
+                            "Category", current.getCategory()
+                    );
+                    intent.putExtra(
+                            "DaysOnSite", current.getDaysOnSite()
+                    );
+                    intent.putExtra(
+                            "Brand", current.getBrand()
+                    );
+                    intent.putExtra(
+                            "ScCode", current.getScCode()
+                    );
+                    intent.putExtra(
+                            "Price", current.getPrice()
+                    );
+                    intent.putExtra(
+                            "Discount", current.getDiscount()
                     );
                     context.startActivity(intent);
                 });

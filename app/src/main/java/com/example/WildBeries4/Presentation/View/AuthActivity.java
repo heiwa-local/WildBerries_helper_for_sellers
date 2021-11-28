@@ -57,7 +57,6 @@ public class AuthActivity extends AppCompatActivity {
                 String email = etEmailLogin.getText().toString();
                 String password = etPasswordLogin.getText().toString();
 
-
                 usersDTO = new UsersDTO();
                 UsersDTO usersDTOFromDB = new UsersDTO();
                 usersDTO.setEmail(email);
@@ -66,25 +65,30 @@ public class AuthActivity extends AppCompatActivity {
                     userExist = mAuthActivityViewModel.getUserByEmailAndPassword(email, password);
                     userExist.observe(AuthActivity.this, new Observer<UsersDTO>() {
                         @Override
-                        public void onChanged(UsersDTO usersDTO) {
-                            usersDTOFromDB.email = usersDTO.email;
-                            usersDTOFromDB.password = usersDTO.password;
-                            usersDTOFromDB.role = usersDTO.role;
+                        public void onChanged(UsersDTO usersDTOs) {
+                            if (usersDTOs != null){
+                            usersDTOFromDB.email = usersDTOs.email;
+                            usersDTOFromDB.password = usersDTOs.password;
+                            usersDTOFromDB.role = usersDTOs.role;
                             if (!(usersDTOFromDB == null)) {
-                                if(usersDTOFromDB.role.equals("User")) {
+                                if (usersDTOFromDB.role.equals("User")) {
                                     Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                                    intent.putExtra("role", "User");
                                     startActivity(intent);
                                 }
-                                if(usersDTOFromDB.role.equals("Admin")){
-                                    Intent intent = new Intent(AuthActivity.this,AdminUserListActivity.class);
-                                    startActivity(intent);
-                                }
-                                if(usersDTOFromDB.role.equals("GoogleUser")){
+                                if (usersDTOFromDB.role.equals("Admin")) {
                                     Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                                    intent.putExtra("role", "Admin");
                                     startActivity(intent);
                                 }
-
-                            } else {
+                                if (usersDTOFromDB.role.equals("GoogleUser")) {
+                                    Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                                    intent.putExtra("role", "GoogleUser");
+                                    startActivity(intent);
+                                }
+                            }
+                            }
+                            else {
                                 Toast.makeText(AuthActivity.this, "Пароль или логин неправилен",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -131,20 +135,14 @@ public class AuthActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             UsersDTO usersDTO1 = new UsersDTO("GoogleUser",account.getEmail(),account.getId(),account.getDisplayName(),account.getFamilyName());
-            mAuthActivityViewModel.getUserByEmailAndRole(usersDTO1.email,usersDTO1.role).observe(AuthActivity.this, new Observer<UsersDTO>() {
-                @Override
-                public void onChanged(UsersDTO usersDTO) {
-                    if (usersDTO.email.isEmpty()){
+            Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+            mAuthActivityViewModel.getUserByEmailAndRole(usersDTO1.email,usersDTO1.role).observe(AuthActivity.this, usersDTOs-> {
+                    if (usersDTOs == null){
                         mAuthActivityViewModel.addUser(usersDTO1);
                     }
-                }
             });
-            Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+            intent.putExtra("role", "GoogleUser");
             startActivity(intent);
-//            UsersDTO usersDTO = new UsersDTO(account.getEmail(),"GoogleUser",account.getId(),account.getDisplayName(),account.getFamilyName());
-//            mAuthActivityViewModel.addUser(usersDTO);
-
-
         } catch (ApiException e) {
             Log.w("handleSignInResult", "signInResult:failed code=" + e);
             Toast.makeText(AuthActivity.this, "Регистрация не прошла", Toast.LENGTH_SHORT).show();

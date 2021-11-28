@@ -3,6 +3,7 @@ package com.example.WildBeries4.Presentation.View;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
     private static volatile StatisticRoomDatabase INSTANCE;
     private LiveData<List<PostPojo>> postPojo;
     private PostPojo onePostPojo;
-
+    int quantityNotInOrder;
     String allSum;
     double allTotalSum;
     TextView tvTotalSum;
     TextView tvTotalVolume;
+    TextView tvQuantityNotInOrder;
     Button btnConverter;
     TextView tv11tv11;
+    Button btnUserListForAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,30 +69,35 @@ public class MainActivity extends AppCompatActivity {
 
         mStatisticViewModel = new ViewModelProvider(this).get(StatisticViewModel.class);
         mMainActivityViewModel = new MainActivityViewModel(new Application());
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, NewStatisticActivity.class);
-            startActivityForResult(intent, NEW_STATISTIC_ACTIVITY_REQUEST_CODE);
-        });
 
         postPojo = mMainActivityViewModel.getListFromWB();
-
         postPojo.observe(this, PostPogos -> {
-            // Update the cached copy of the words in the adapter.
             adapter.submitList(PostPogos);
 
         });
-        tvTotalSum = findViewById(R.id.tvTotalSum);
-        tvTotalVolume = findViewById(R.id.tvTotalWant);
-        tv11tv11 = findViewById(R.id.tv11tv11);
+        Bundle arguments = getIntent().getExtras();
+        btnUserListForAdmin = findViewById(R.id.btnUserListForAdmin);
+        if (arguments.get("role").equals("Admin")){
+            btnUserListForAdmin.setVisibility(View.VISIBLE);
+        }
+        else {
+            btnUserListForAdmin.setVisibility(View.GONE);
+        }
+        btnUserListForAdmin.setOnClickListener(view ->{
+            Intent intent = new Intent(this, AdminUserListActivity.class);
+            startActivity(intent);
+                });
 
-        postPojo.observe(this, new Observer<List<PostPojo>>() {
-            @Override
-            public void onChanged(List<PostPojo> postPojos) {
-                onePostPojo = postPojos.get(0);
-                tv11tv11.setText(onePostPojo.getBrand());
-            }
-        });
+
+
+
+//        postPojo.observe(this, new Observer<List<PostPojo>>() {
+//            @Override
+//            public void onChanged(List<PostPojo> postPojos) {
+//                onePostPojo = postPojos.get(0);
+//                tv11tv11.setText(onePostPojo.getBrand());
+//            }
+//        });
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

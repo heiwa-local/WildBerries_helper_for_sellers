@@ -32,7 +32,7 @@
             android:name=".Presentation.View.MainActivity"
             android:label="WildBerries Statistics" />
         <activity android:name=".Presentation.View.NewStatisticActivity" />
-        <activity android:name=".Presentation.View.OpenStatistic" />
+        <activity android:name=".Presentation.View.OpenPostPojo" />
     </application>
 
 </manifest>
